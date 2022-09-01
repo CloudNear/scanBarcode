@@ -1,0 +1,17 @@
+public function getValueByBarcode()
+    {
+        if ($this->errors == 1) {
+            if (!$this->input->is_ajax_request()) {
+                exit('No direct script access allowed');
+            }else{
+                $id = trim($_POST['product_id']);
+                $checkID = $this->M_produk->getProductData($id);
+                if($checkID)
+                {
+                    echo json_encode($checkID);
+                }else{
+                    echo json_encode('false');
+                }
+            }
+        }
+    }
